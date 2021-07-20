@@ -1,4 +1,4 @@
-import Tag from "./Tag.js";
+
 
 export default class Photographer {
 
@@ -11,14 +11,32 @@ export default class Photographer {
         this.tagline = tagline;
         this.price = price;
         this.portrait = portrait;
+        this.html = this.render()
+    }
+
+
+    hidden() {
+        const element = document.getElementById(this.id)
+        if (element.classList.length === 1) {
+            document.getElementById(this.id).className += ' hidden'
+        }
+
+    }
+
+    visible() {
+        const element = document.getElementById(this.id)
+        if (element.classList.length === 2) {
+            document.getElementById(this.id).classList.remove('hidden')
+        }
+
     }
 
     render() {
 
         return (
-            `<article class="photograph">
+            `<article class="photograph" id="${this.id}">
             <a href="#" class="authorHeader">
-                    <img src="Images/${this.portrait}" alt="Photographe">
+                    <img src="images/${this.portrait}" alt="Photographe">
                     <h2>${this.name}</h2>
                 </a>
                 <p class="authorInfos">
@@ -27,7 +45,7 @@ export default class Photographer {
                     <span class="price">${this.price}€/jour</span>
                  </p>
                 <div class="authorTags">
-                    ${this.tags.map(tag => new Tag(tag).render()).join('')} 
+                    ${this.tags.map(tag => `<a href="#${tag}" class="tag ${tag}">#${tag}</a>`).join('')}
                 </div>
             </article>`); //join Echappe les virgules du tableau en le convertisant en chaine de caractères
     }
