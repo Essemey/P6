@@ -11,7 +11,7 @@ export default class Photographer {
         this.tagline = tagline;
         this.price = price;
         this.portrait = portrait;
-        this.html = this.render()
+        this.html = this.renderIndex()
     }
 
 
@@ -33,9 +33,26 @@ export default class Photographer {
 
     render() {
 
+        document.getElementById('infos').insertAdjacentHTML('beforeend', `
+        <div class="description">
+            <h1>${this.name}</h1>
+            <p class="authorInfos"> <span class="city">${this.city}, ${this.country}</span>
+                <span class="tagline">${this.tagline}</span>
+            </p>
+            <div class="authorTags">
+                ${this.tags.map(tag => `<a href="#${tag}" class="tag ${tag}">#${tag}</a>`).join('')}
+            </div>
+        </div>
+        <button>Contactez-moi</button>
+        <img src="images/${this.portrait}" alt="Photographe">
+        `)
+    }
+
+    renderIndex() {
+
         return (
             `<article class="photograph" id="${this.id}">
-            <a href="#" class="authorHeader">
+            <a href="/photographer.html?${this.id}" class="authorHeader">
                     <img src="images/${this.portrait}" alt="Photographe">
                     <h2>${this.name}</h2>
                 </a>
