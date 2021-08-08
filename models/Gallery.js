@@ -1,34 +1,49 @@
-import Media from "./Media.js"
+//import Media from "./Media.js"
+import MediaFactory from "./MediaFactory.js"
 
 class Gallery {
 
-    constructor(medias, id) {
-        this.medias = medias || []
-        this.authorId = id
-        this.html = ''
+    constructor(author) {
+        this.medias = []
+        this.author = author
     }
 
-    hydrate(target) {
-        this.html = ''
-        if (target === undefined) {
-            this.medias.forEach(media => {
-                this.html += media.photographerId === this.authorId ? new Media(media).render() : ''
-            })
-        } else {
-            target.forEach(media => {
-                this.html += media.photographerId === this.authorId ? new Media(media).render() : ''
-            })
-        }
+    hydrate(medias) {
+
+        const ownMedia = new MediaFactory()
+        medias.forEach(media => {
+            if (media.photographerId === this.author.id) {
+                this.medias.push(ownMedia.build(media))
+            }
+        })
+
+    }
+
+
+    display() {
+
+        let html = ''
+
+        this.medias.forEach(media => {
+            html += media.render()
+        })
+
+        document.querySelector('main').insertAdjacentHTML('beforeend',
+            `<section id="gallery">
+            <button id="popular">Trier par popularité</button>
+            <div id="medias">
+            ${html}
+            </div>
+        </section>`)
     }
 
     handleSort() {
 
         document.getElementById('popular').addEventListener('click', () => {
-
+            console.log(this.medias)
             this.remove()
             this.medias.sort((a, b) => b.likes - a.likes)
-            this.hydrate()
-            this.render()
+            this.display()
             console.log('click')
 
         })
@@ -40,16 +55,7 @@ class Gallery {
         document.querySelector('main').removeChild(document.getElementById('gallery'))
     }
 
-    render() {
 
-        document.querySelector('main').insertAdjacentHTML('beforeend',
-            `<section id="gallery">
-            <button id="popular">Trier par popularité</button>
-            <div id="medias">
-            ${this.html}
-            </div>
-        </section>`)
-    }
 
 
 }

@@ -40,7 +40,7 @@ export default class Photographer {
                 <span class="tagline">${this.tagline}</span>
             </p>
             <div class="authorTags">
-                ${this.tags.map(tag => `<a href="#${tag}" class="tag ${tag}">#${tag}</a>`).join('')}
+                ${this.tags.map(tag => `<a href="/index.html#${tag}" class="tag ${tag}">#${tag}</a>`).join('')}
             </div>
         </div>
         <button>Contactez-moi</button>

@@ -91,7 +91,29 @@ export default class List {
             `<a href="#${tag}" class="tag ${tag}">#${tag}</a>`).join(''))
     }
 
+    checkUrl() {
+        const tagUrl = window.location.hash.substring(1)
+        let correctTag = false
+        this.all.forEach(photographer => {
+            photographer.tags.forEach(tag => {
+                if (tag === tagUrl) {
+                    correctTag = true
+                }
+            })
+        })
+        const select = [...document.getElementsByClassName(tagUrl)]
+        if (!this.filters.includes(tagUrl)) { //Si le filtre n'est pas déja activé on l'ajoute
+            select.forEach(button => {
+                button.style.backgroundColor = '#911616'
+                button.style.color = 'white'
+            })
+            this.addFilter(tagUrl)
+        }
+    }
+
     handleClick() {
+        
+
         let tags = [...document.getElementsByClassName('tag')]
         tags.forEach(tagDOM => tagDOM.addEventListener('click', (e) => {
             e.preventDefault()

@@ -10,6 +10,7 @@ fetch('/data.json')
         photographerList.display()
         photographerList.displayTags()
         photographerList.handleClick()
+        photographerList.checkUrl()
     })
     .catch(err => console.error(err))
 
