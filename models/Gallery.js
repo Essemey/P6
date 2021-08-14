@@ -1,19 +1,20 @@
 //import Media from "./Media.js"
 import MediaFactory from "./MediaFactory.js"
+import Slider from "./Slider.js"
 
 class Gallery {
 
     constructor(author) {
         this.medias = []
         this.author = author
+        this.factory = new MediaFactory()
     }
 
     hydrate(medias) {
 
-        const ownMedia = new MediaFactory()
         medias.forEach(media => {
             if (media.photographerId === this.author.id) {
-                this.medias.push(ownMedia.build(media))
+                this.medias.push(this.factory.build(media))
             }
         })
 
@@ -28,32 +29,40 @@ class Gallery {
             html += media.render()
         })
 
-        document.querySelector('main').insertAdjacentHTML('beforeend',
-            `<section id="gallery">
+        document.querySelector('main').innerHTML = `
+        <section id="infos">
+        </section>
+        <section id="gallery">
             <button id="popular">Trier par popularité</button>
             <div id="medias">
             ${html}
             </div>
-        </section>`)
+        </section>
+        <div class="slider">
+        </div>
+        `
+
+    }
+
+    handleClickMedia() {
+
+        [...document.querySelectorAll('.media')].forEach(media => {
+            media.addEventListener('click', (e) => {
+                new Slider(e.target, this.medias).display()
+            })
+        })
     }
 
     handleSort() {
 
         document.getElementById('popular').addEventListener('click', () => {
-            console.log(this.medias)
-            this.remove()
             this.medias.sort((a, b) => b.likes - a.likes)
             this.display()
-            console.log('click')
-
         })
 
     }
 
-    remove() {
 
-        document.querySelector('main').removeChild(document.getElementById('gallery'))
-    }
 
 
 

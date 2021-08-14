@@ -103,9 +103,11 @@ main #gallery #medias{
   display:flex;
   flex-wrap: wrap;
   justify-content:space-between;
-
 }
 
+main #gallery .media{
+cursor: pointer;
+}
 
 main #gallery .media p{
 font-size: 24px;
