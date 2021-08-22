@@ -6,16 +6,21 @@ export default class Image extends Media {
 
         super(item)
         this.image = item.image
+        this.dom = `<img src="/medias/${this.image}">`
 
     }
 
+
+
     render() {
 
-        console.log(this.image)
+        console.log('likes: ', this.likes)
+
         return `
             <div class="media">
                 <img src="/medias/${this.image}" />
-                <p>${this.title}, ${this.likes}</p>
+                <h2>${this.title}</h2>
+                <p>${this.likes}<button class="btn-like">Like</button></p>
             </div> 
         `
     }

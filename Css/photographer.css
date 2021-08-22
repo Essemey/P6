@@ -33,6 +33,26 @@ line-height: 23px;
 color: #911C1C;
 }
 
+.open{
+  display: flex !important;
+}
+
+.close{
+  display: none !important;
+}
+
+.btn-like{
+  background-color:transparent;
+  padding: 7px;
+  border: 2px solid rgb(78, 233, 78);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.liked{
+  background-color: rgb(78, 233, 78);
+  color: white;
+}
 
 main #infos img{
     width: 100%;
@@ -125,6 +145,55 @@ main #gallery .media img, main #gallery .media video{
 }
 
 
+.visible{
+  display: flex !important;
+}
 
 
+main .slider{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 25;
+  background-color: white;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
+main .slider img, main .slider video{
+  width: 600px;
+  height: 600px;
+  object-fit: cover;
+  object-position: 50%;
+}
+
+main .slider #close{
+  padding: 8px;
+  height: 30px;
+  background-color:red;
+  cursor: pointer;
+}
+
+main .arrow{
+  background-color: green;
+  padding: 15px;
+  cursor: pointer;
+}
+
+main .score{
+  position: fixed;
+  bottom: 0;
+  right: 50px;
+  padding: 8px;
+  width: 200px;
+  height: 80px;
+  background-color: brown;
+}
+
+main #listbox #content {
+  
+}

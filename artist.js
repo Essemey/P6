@@ -1,5 +1,6 @@
 import Photographer from "./models/Photographer.js"
 import Gallery from "./models/Gallery.js"
+import ListBox from "./models/ListBox.js";
 
 
 fetch('/data.json')
@@ -18,8 +19,11 @@ fetch('/data.json')
         if (redirect) window.location.replace('/')
         gallery.hydrate(media)
         gallery.display()
+        gallery.displayScore()
         author.render()
-        gallery.handleClickMedia()
+        gallery.listenSlider()
+        gallery.listenLike()
+        ListBox.handleOpening()
         gallery.handleSort()
     })
     .catch(err => console.error(err))
