@@ -1,0 +1,1 @@
+this.addHTML(new Photographer(photographer).html)
