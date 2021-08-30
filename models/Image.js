@@ -20,7 +20,7 @@ export default class Image extends Media {
             <div class="media">
                 <img src="/medias/${this.image}" />
                 <h2>${this.title}</h2>
-                <p>${this.likes}<button class="btn-like">Like</button></p>
+                <p>${this.likes}<span class="like material-icons favorite_border">&#xE87E</span></p>
             </div> 
         `
     }

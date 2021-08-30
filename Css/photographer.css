@@ -37,17 +37,10 @@ color: #911C1C;
   display: flex !important;
 }
 
-.close{
+.closed{
   display: none !important;
 }
 
-.btn-like{
-  background-color:transparent;
-  padding: 7px;
-  border: 2px solid rgb(78, 233, 78);
-  border-radius: 3px;
-  cursor: pointer;
-}
 
 .liked{
   background-color: rgb(78, 233, 78);
@@ -123,6 +116,7 @@ main #gallery #medias{
   display:flex;
   flex-wrap: wrap;
   justify-content:space-between;
+  margin-top: 20px;
 }
 
 main #gallery .media{
@@ -164,6 +158,12 @@ main .slider{
   justify-content: center;
 }
 
+main .slider .image_container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 main .slider img, main .slider video{
   width: 600px;
   height: 600px;
@@ -172,16 +172,20 @@ main .slider img, main .slider video{
 }
 
 main .slider #close{
-  padding: 8px;
-  height: 30px;
-  background-color:red;
+  font-size: 42px;
+ align-self: flex-start;
   cursor: pointer;
+  color:#901C1C;
+  position: relative;
+  right: 90px;
 }
 
 main .arrow{
-  background-color: green;
-  padding: 15px;
+  font-size:48px;
   cursor: pointer;
+  color:#901C1C;
+  margin-right: 35px;
+  margin-left: 35px;
 }
 
 main .score{
@@ -194,6 +198,40 @@ main .score{
   background-color: brown;
 }
 
-main #listbox #content {
+main #listbox {
+  background-color: #901C1C;
+  width: 170px;
+  border-radius: 3px;
+  margin-top: 10px;
   
+}
+
+main #listbox button{
+  background-color:transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+main #listbox #open{
+ position: relative;
+ top: 6.5px;
+ left: 8px;
+}
+
+main #listbox button[data-current]{
+  padding: 14px 0px 14px 10px;
+}
+
+main #listbox #content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+main #listbox #content button {
+  width: 90%;
+  padding: 14px 20px;
+  border-top: 1px solid white;
 }

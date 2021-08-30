@@ -16,7 +16,7 @@ export default class Video extends Media {
             <div class="media">
                 <video autoplay="true" src="/medias/${this.video}"></video>
                 <h2>${this.title}</h2>
-                <p>${this.likes}<button class="btn-like">Like</button></p>
+                <p>${this.likes}<span class="like material-icons favorite_border">&#xE87E</span></p>
             </div> 
         `
     }

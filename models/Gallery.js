@@ -75,12 +75,19 @@ class Gallery {
 
 
 
-        document.querySelectorAll('.btn-like').forEach(button => {
+        document.querySelectorAll('.like').forEach(button => {
 
             const domMedia = button.parentNode.previousElementSibling.previousElementSibling.outerHTML
 
             //En cas de redisplay on vérifie les médias déja likés
-            this.medias.forEach(media => media.dom === domMedia && media.liked ? button.className += ' liked' : media)
+            this.medias.forEach(media => {
+                if (media.dom === domMedia && media.liked) {
+                    button.className = 'like material-icons favorite'
+                    button.innerHTML = '&#xE87D'
+                } else {
+                    return media;
+                }
+            })
 
             button.addEventListener('click', () => {
 
@@ -88,14 +95,16 @@ class Gallery {
                     if (media.dom === domMedia && !media.liked) {
 
                         media.likes++
-                        button.className += ' liked'
+                        button.className = 'like material-icons favorite'
+                        button.innerHTML = '&#xE87D'
                         media.liked = true
                         button.parentNode.childNodes[0].data = media.likes
                         this.displayScore()
 
                     } else if (media.dom === domMedia && media.liked) {
                         media.likes--
-                        button.className = 'btn-like'
+                        button.className = 'like material-icons favorite_border'
+                        button.innerHTML = '&#xE87E'
                         media.liked = false
                         button.parentNode.childNodes[0].data = media.likes
                         this.displayScore()
@@ -112,32 +121,34 @@ class Gallery {
 
     handleSort() {
 
-        document.getElementById('popular').addEventListener('click', () => {
+        const popular = document.getElementById('popular')
+        const date = document.getElementById('date')
+        const title = document.getElementById('title')
+
+        popular.addEventListener('click', () => {
             this.medias.sort((a, b) => b.likes - a.likes)
-            this.display()
-            this.listenSlider()
-            this.listenLike()
-            this.handleSort()
+            this.refresh('popular')
         })
 
-        document.getElementById('date').addEventListener('click', () => {
+        date.addEventListener('click', () => {
             this.medias.sort((a, b) => new Date(b.date) - new Date(a.date))
-            this.display()
-            this.listenSlider()
-            this.listenLike()
-            ListBox.handleOpening()
-            this.handleSort()
+            this.refresh('date')
         })
 
-        document.getElementById('title').addEventListener('click', () => {
+        title.addEventListener('click', () => {
             this.medias.sort((a, b) => (a.title > b.title) ? 1 : -1)
-            console.log(this.medias)
-            this.display()
-            this.listenSlider()
-            this.listenLike()
-            ListBox.handleOpening()
-            this.handleSort()
+            this.refresh('title')
         })
+
+    }
+
+    refresh(currentId) {
+        this.display()
+        this.listenSlider()
+        this.listenLike()
+        ListBox.handleOpening()
+        ListBox.switch(currentId)
+        this.handleSort()
 
     }
 

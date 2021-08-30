@@ -11,11 +11,11 @@ export default class Slider {
 
     display() {
         this.slider.innerHTML = `
-        <span id="close">Close</span>
         <div class="image_container">
-            <span class="arrow" id="back">Back</span>
+            <span class="arrow material-icons arrow_back_ios" id="back">&#xE5E0</span>
             <div class="slider_image">${this.current}</div>
-            <span class="arrow" id="next">Next</span>
+            <span class="arrow material-icons arrow_forward_ios" id="next">&#xE5E1</span>
+            <span class="material-icons close" id="close">&#xE5CD</span>
         </div>
 
 

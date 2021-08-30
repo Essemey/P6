@@ -6,7 +6,6 @@ class Media {
         this.id = id
         this.authorId = photographerId
         this.title = title
-        this.image = image
         this.tags = tags
         this.likes = likes
         this.date = date
