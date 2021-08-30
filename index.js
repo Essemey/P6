@@ -5,12 +5,12 @@ import List from "./models/List.js";
 fetch('/data.json')
     .then(res => res.json())
     .then(({ photographers }) => {
-        const photographerList = new List(photographers)
-        photographerList.hydrate()
-        photographerList.display()
-        photographerList.displayTags()
-        photographerList.handleClick()
-        photographerList.checkUrl()
+        const list = new List(photographers)
+        list.hydrate()
+        list.display()
+        list.displayTags()
+        list.handleClick()
+        list.checkUrl()
     })
     .catch(err => console.error(err))
 

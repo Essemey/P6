@@ -112,7 +112,7 @@ export default class List {
     }
 
     handleClick() {
-        
+
 
         let tags = [...document.getElementsByClassName('tag')]
         tags.forEach(tagDOM => tagDOM.addEventListener('click', (e) => {

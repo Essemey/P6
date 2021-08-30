@@ -203,8 +203,14 @@ main #listbox {
   width: 170px;
   border-radius: 3px;
   margin-top: 10px;
-  
 }
+
+main #listbox .btn-grp{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 
 main #listbox button{
   background-color:transparent;
@@ -214,9 +220,7 @@ main #listbox button{
 }
 
 main #listbox #open{
- position: relative;
- top: 6.5px;
- left: 8px;
+  margin-right: 8px;
 }
 
 main #listbox button[data-current]{
