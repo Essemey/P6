@@ -6,14 +6,12 @@
 }
 
 header {
-  padding: 43px 100px 0px 100px;
+  padding: 43px 100px 40px 100px;
 }
 
 header img{
     width:200px;
     height:50px;
-    object-position: -32px;
-      margin-bottom: 40px;
 }
 
 main{
@@ -48,7 +46,7 @@ color: #911C1C;
 }
 
 main #infos img{
-    width: 100%;
+   
   height: 200px;
   width: 200px;
   border-radius: 100%;
@@ -58,7 +56,7 @@ main #infos img{
 
 main #infos{
     display: flex;
-    background: #FAFAFA;
+    background-color: #FAFAFA;
     border-radius: 5px;
     justify-content:space-between;
     padding-bottom: 50px;
@@ -67,7 +65,7 @@ main #infos{
     padding-top: 56px;
 }
 
-main #infos button{
+main #infos #contact{
     background-color: #911C1C;
 border-radius: 5px;
 color: white;
@@ -121,13 +119,33 @@ main #gallery #medias{
 
 main #gallery .media{
 cursor: pointer;
+margin-bottom: 30px;
 }
 
-main #gallery .media p{
+main #gallery .media .media-infos{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+}
+
+main #gallery .media .media-infos h2{
+  font-size:24px;
+  color:#911C1C;
+  font-weight:normal;
+}
+
+main #gallery .media .media-infos p{
 font-size: 24px;
 line-height: 31px;
 color: #911C1C;
 }
+
+main #gallery .media .media-infos p span{
+  position: relative;
+  top: 1.2px;
+  margin-left: 3px;
+}
+
 
 
 main #gallery .media img, main #gallery .media video{
@@ -144,98 +162,135 @@ main #gallery .media img, main #gallery .media video{
 }
 
 
-main .slider{
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  z-index: 25;
-  background-color: white;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-main .slider .image_container{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-main .slider img, main .slider video{
-  width: 600px;
-  height: 600px;
-  object-fit: cover;
-  object-position: 50%;
-}
-
-main .slider #close{
-  font-size: 42px;
- align-self: flex-start;
-  cursor: pointer;
-  color:#901C1C;
-  position: relative;
-  right: 90px;
-}
-
-main .arrow{
-  font-size:48px;
-  cursor: pointer;
-  color:#901C1C;
-  margin-right: 35px;
-  margin-left: 35px;
-}
-
 main .score{
   position: fixed;
   bottom: 0;
   right: 50px;
-  padding: 8px;
-  width: 200px;
-  height: 80px;
-  background-color: brown;
-}
-
-main #listbox {
-  background-color: #901C1C;
-  width: 170px;
-  border-radius: 3px;
-  margin-top: 10px;
-}
-
-main #listbox .btn-grp{
+  width: 376px;
+  height: 89px;
+  background-color:#DB8876;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   display: flex;
+  align-items: center;
+  font-size: 24px;
+  padding: 21px 34px;
   justify-content: space-between;
-  align-items: center;
 }
 
-
-main #listbox button{
-  background-color:transparent;
-  border: none;
-  color: white;
-  cursor: pointer;
-}
-
-main #listbox #open{
-  margin-right: 8px;
-}
-
-main #listbox button[data-current]{
-  padding: 14px 0px 14px 10px;
-}
-
-main #listbox #content {
+main .score p{
   display: flex;
-  flex-direction: column;
   align-items: center;
-
 }
 
-main #listbox #content button {
-  width: 90%;
-  padding: 14px 20px;
-  border-top: 1px solid white;
+
+@media all and (max-width:426px){
+
+  .tag{
+    font-size: 13px;
+    line-height: 12px;
+  }
+
+  main #infos .description .authorTags {
+    max-width: 250px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+main #gallery .media .media-infos h2{
+  font-size:16px;
+}
+
+main #gallery .media .media-infos p{
+  font-size:16px;
+  font-weight: 500;
+}
+
+main #gallery .media .media-infos p span{
+  font-size:16px;
+}
+
+  header {
+  padding-top: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+}
+
+  main{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  main #infos .description .city {
+font-size: 16px;
+line-height: 22px;
+color: #901C1C;
+margin-bottom: 0px;
+}
+
+  main #infos .description p {
+padding-left: 0px;
+margin-bottom: 4px;
+}
+
+
+main #infos .description .tagline {
+font-size: 14px;
+line-height: 23px;
+color: #525252;
+}
+
+main #infos{
+  background-color: white;
+}
+
+  main #infos .description h1{
+  font-size: 36px;
+line-height: 32px;
+font-weight:normal;
+margin-bottom: 3px;
+}
+
+main #infos img{
+  height: 100px;
+  width: 100px;
+  position: relative;
+  bottom: 12px;
+}
+
+main #gallery .media img, main #gallery .media video{
+  width:100%;
+  height:190px;
+  border-radius:5px;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+main #infos{
+    padding: 0px;
+}
+
+main #gallery .media{
+  width:100%;
+  margin-bottom: 10px;
+}
+
+main #infos #contact{
+ position: fixed;
+ font-size:18px;
+ line-height:23px;
+ height:35px;
+ margin: 0px 25%;
+ right:0px;
+ z-index: 20;
+ bottom: 30px;
+}
+
+
+
+main .score{
+ display: none;
+}
+
 }

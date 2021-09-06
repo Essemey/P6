@@ -12,17 +12,6 @@ class Gallery {
         this.listBox = new ListBox()
     }
 
-    hydrate(medias) {
-
-        medias.forEach(media => {
-            if (media.photographerId === this.author.id) {
-                this.medias.push(this.factory.build(media))
-            }
-        })
-
-    }
-
-
     display() {
 
         let html = ''
@@ -39,84 +28,12 @@ class Gallery {
         `
     }
 
-    setScore() {
-
-        let score = 0;
-
-        for (let i = 0; i < this.medias.length; i++) {
-            score += this.medias[i].likes
-        }
-
-        return score;
-    }
-
     displayScore() {
 
         const score = this.setScore()
-        document.querySelector('.score').innerHTML = `<p>${score}</p>`
-    }
-
-    listenSlider() {
-
-        const slider = new Slider(this.medias)
-
-        document.querySelectorAll('.media img, .media video').forEach(media => {
-            media.addEventListener('click', (e) => {
-                slider.setCurrent(e.target)
-                slider.display()
-                slider.handleClose()
-                slider.handleArrows()
-            })
-        })
-    }
-
-
-    listenLike() {
-
-
-
-        document.querySelectorAll('.like').forEach(button => {
-
-            const domMedia = button.parentNode.previousElementSibling.previousElementSibling.outerHTML
-
-            //En cas de redisplay on vérifie les médias déja likés
-            this.medias.forEach(media => {
-                if (media.dom === domMedia && media.liked) {
-                    button.className = 'like material-icons favorite'
-                    button.innerHTML = '&#xE87D'
-                } else {
-                    return media;
-                }
-            })
-
-            button.addEventListener('click', () => {
-
-                this.medias.map(media => {
-                    if (media.dom === domMedia && !media.liked) {
-
-                        media.likes++
-                        button.className = 'like material-icons favorite'
-                        button.innerHTML = '&#xE87D'
-                        media.liked = true
-                        button.parentNode.childNodes[0].data = media.likes
-                        this.displayScore()
-
-                    } else if (media.dom === domMedia && media.liked) {
-                        media.likes--
-                        button.className = 'like material-icons favorite_border'
-                        button.innerHTML = '&#xE87E'
-                        media.liked = false
-                        button.parentNode.childNodes[0].data = media.likes
-                        this.displayScore()
-
-                    } else {
-                        return media
-                    }
-                })
-
-
-            })
-        })
+        document.querySelector('.score').innerHTML =
+            `<p>${score}<span class="like material-icons favorite" data-id=${this.id}>&#xE87D</span></p>
+            <p>${this.author.price}€/jour</p>`
     }
 
     handleSort() {
@@ -142,6 +59,65 @@ class Gallery {
 
     }
 
+    hydrate(medias) {
+
+        medias.forEach(media => {
+            if (media.photographerId === this.author.id) {
+                this.medias.push(this.factory.build(media))
+            }
+        })
+
+    }
+
+    listenLike() {
+
+        document.querySelectorAll('.like').forEach(button => {
+
+            button.addEventListener('click', () => {
+
+                this.medias.forEach(media => {
+                    if (media.id == button.dataset.id) { //On récupère le bon media
+                        media.liked = !media.liked  //On change la valeur de liked
+                        handleLike(media) //On incrémente ou désincrémente selon le staut de liked
+                        button.parentNode.childNodes[0].data = media.likes //On affiche le nouveau nombre de likes
+                        this.displayScore()
+                    }
+                })
+
+            })
+
+            function handleLike(media) {
+                if (media.liked) {
+                    media.likes++
+                    button.innerHTML = '&#xE87D'
+                    button.classList.replace('favorite_border', 'favorite')
+                } else {
+                    media.likes--
+                    button.innerHTML = '&#xE87E'
+                    button.classList.replace('favorite', 'favorite_border')
+                }
+            }
+
+        })
+
+    }
+
+
+    listenSlider() {
+
+        const slider = new Slider(this.medias)
+
+        document.querySelectorAll('.media img, .media video').forEach(media => {
+            media.addEventListener('click', (e) => {
+                slider.setCurrent(e.target)
+                slider.prepareVideo()
+                slider.display()
+                slider.handleClose()
+                slider.handleArrows()
+            })
+        })
+    }
+
     refresh(currentId) {
         this.display()
         this.listenSlider()
@@ -149,8 +125,19 @@ class Gallery {
         ListBox.handleOpening()
         ListBox.switch(currentId)
         this.handleSort()
-
     }
+
+    setScore() {
+
+        let score = 0;
+
+        for (let i = 0; i < this.medias.length; i++) {
+            score += this.medias[i].likes
+        }
+
+        return score;
+    }
+
 
 
 }

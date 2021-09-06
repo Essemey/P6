@@ -6,7 +6,8 @@ export default class Video extends Media {
 
         super(item)
         this.video = item.video
-        this.dom = `<video autoplay="true" src="/medias/${this.video}"></video>`
+        this.dom = `<video src="/medias/${this.video}" data-id=${this.id}></video>`
+
 
     }
 
@@ -14,9 +15,15 @@ export default class Video extends Media {
 
         return `
             <div class="media">
-                <video autoplay="true" src="/medias/${this.video}"></video>
-                <h2>${this.title}</h2>
-                <p>${this.likes}<span class="like material-icons favorite_border">&#xE87E</span></p>
+                ${this.dom}
+                <div class="media-infos">
+                    <h2>${this.title}</h2>
+                    ${!this.liked
+                ?
+                `<p>${this.likes}<span class="like material-icons favorite_border" data-id=${this.id}>&#xE87E</span></p>`
+                :
+                `<p>${this.likes}<span class="like material-icons favorite" data-id=${this.id}>&#xE87D</span></p>`}
+                </div>
             </div> 
         `
     }

@@ -1,0 +1,140 @@
+main .bg_modal{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(196, 196, 196, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+}
+
+main .contact_modal{
+  display: flex;
+  flex-direction: column;
+  background-color:#DB8876;
+  border-radius: 5px;
+  padding: 38px 35px;
+}
+
+main .contact_modal header{
+  display: flex;
+  justify-content:space-between;
+  padding: 0px;
+  margin-bottom: 20px;
+}
+
+main .contact_modal header h1{
+  font-size: 44px;
+}
+
+main .contact_modal header button{
+  color: white;
+ font-size: 42px;
+ cursor: pointer;
+ background-color:transparent;
+ border:none;
+ height: fit-content;
+}
+
+main .contact_modal form{
+  display: flex;
+  flex-direction: column;
+}
+
+main .contact_modal form input{
+  width: 600px;
+  height:48px;
+  font-size:26px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+main .contact_modal form textarea{
+   width: 600px;
+   max-width: 600px;
+   min-width: 600px;
+  height:160px;
+  max-height: 160px;
+  min-height: 160px;
+  font-size:26px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+main .contact_modal form label{
+ font-size:26px;
+}
+
+main .contact_modal form button{
+ background-color:#901C1C;
+ color: white;
+ border: none;
+ border-radius: 5px;
+ font-size:18px;
+ padding: 18px 50px;
+ width: 170px;
+ margin-top: 26px;
+ cursor: pointer;
+}
+
+@media all and (max-width:426px){
+
+    main .bg_modal{
+      background-color: #DB8876;
+      padding: 22px 20px;
+      justify-content: flex-start;
+    }
+
+    main .contact_modal{
+  width: 100%;
+  padding: 0px;
+}
+
+main .contact_modal header button{
+position: relative;
+bottom: 4px;
+}
+
+main .contact_modal header h1{
+  font-size: 36px;
+  font-weight: normal;
+}
+
+main .contact_modal form input{
+  width: 100%;
+  height:52px;
+  font-size:22px;
+  padding: 3px 8px;
+  margin-bottom: 14px;
+}
+
+main .contact_modal form textarea{
+  width: 100%;
+   max-width: 100%;
+   min-width: 100%;
+  height:184px;
+  max-height: 184px;
+  min-height: 184px;
+  font-size:22px;
+  padding: 3px 8px;
+}
+
+main .contact_modal form label{
+ font-size:24px;
+}
+
+main .contact_modal form button{
+ 
+ padding: 6px 50px;
+ margin-top: 31px;
+ align-self: center;
+
+}
+
+}

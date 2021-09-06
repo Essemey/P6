@@ -116,12 +116,12 @@ export default class List {
         this.all.forEach(photographer => {
             if (this.filteredList.length !== 0 && this.filters.length !== 0) {
                 if (!this.filteredList.includes(photographer)) { //Si le photographe n'est pas présent dans la liste filtrée on le cache
-                    photographer.hidden()
+                    photographer.hide()
                 } else {
-                    photographer.visible()
+                    photographer.show()
                 }
             } else { //Si la liste filtrée et les filtres sont vides, on ne masque pas les photographes
-                photographer.visible()
+                photographer.show()
             }
         })
     }

@@ -4,21 +4,6 @@ class ListBox {
 
 
 
-    render() {
-
-        return `<div id="listbox">
-            <div class='btn-grp'>
-                <button id="popular" data-current='true'>Trier par popularité</button>
-                <button id="open" class="material-icons expand_more">&#xE5CF</button>
-            </div>
-            <div id="content" class="closed">
-                <button id="date">Trier par Date</button>
-                <button id="title">Trier par Titre</button> 
-            </div>
-        </div>`
-    }
-
-
     static handleOpening() {
 
         console.log('handleOpening')
@@ -58,8 +43,19 @@ class ListBox {
 
     }
 
+    render() {
 
-
+        return `<div id="listbox">
+            <div class='btn-grp'>
+                <button id="popular" data-current='true'>Trier par popularité</button>
+                <button id="open" class="material-icons expand_more">&#xE5CF</button>
+            </div>
+            <div id="content" class="closed">
+                <button id="date">Trier par Date</button>
+                <button id="title">Trier par Titre</button> 
+            </div>
+        </div>`
+    }
 
 }
 

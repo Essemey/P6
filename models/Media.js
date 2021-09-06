@@ -10,6 +10,7 @@ class Media {
         this.likes = likes
         this.date = date
         this.price = price
+        this.liked = false
     }
 
 

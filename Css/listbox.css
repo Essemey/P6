@@ -1,0 +1,51 @@
+main #listbox {
+  background-color: #901C1C;
+  width: 170px;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+main #listbox .btn-grp{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+main #listbox button{
+  background-color:transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+main #listbox #open{
+  margin-right: 8px;
+}
+
+main #listbox button[data-current]{
+  padding: 14px 0px 14px 10px;
+}
+
+main #listbox #content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+main #listbox #content button {
+  width: 90%;
+  padding: 14px 20px;
+  border-top: 1px solid white;
+}
+
+
+@media all and (max-width:426px){
+
+
+main #listbox {
+ display: none;
+}
+
+}
