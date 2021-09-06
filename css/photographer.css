@@ -293,4 +293,12 @@ main .score{
  display: none;
 }
 
+<<<<<<< HEAD:Css/photographer.css
 }
+=======
+main #listbox #content button {
+  width: 90%;
+  padding: 14px 20px;
+  border-top: 1px solid white;
+}
+>>>>>>> 395a4dd2faff4f69ac7eb688fa5f7f3849cd8697:css/photographer.css
