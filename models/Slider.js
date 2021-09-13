@@ -6,23 +6,33 @@ export default class Slider {
         this.all = medias
         this.current
         this.slider = document.querySelector('.slider')
+        this.header = document.querySelector('header')
+        this.main = document.querySelector('main')
     }
+
 
     display() {
         this.slider.innerHTML = `
-        <div class="media_container">
-            <span class="arrow material-icons arrow_back_ios" id="back">&#xE5E0</span>
+        <div class="media_container" role="dialog" aria-label="slider">
+            <button aria-label="Previous image" class="arrow material-icons" id="back">arrow_back_ios</button>
             <div class="slider_media">${this.current.dom}<p>${this.current.title}</p></div>
-            <span class="arrow material-icons arrow_forward_ios" id="next">&#xE5E1</span>
-            <span class="material-icons close" id="close">&#xE5CD</span>
+            <button aria-label="Next image"  class="arrow material-icons" id="next">arrow_forward_ios</button>
+            <button aria-label="Close dialog" class="material-icons" id="close">close</button>
         </div>
 
 
         `
         this.slider.className = 'slider visible'
+        this.slider.ariaHidden = 'false'
+        this.main.ariaHidden = 'true'
+        this.header.ariaHidden = 'true'
+        this.main.style.visibility = 'hidden'
+        this.header.style.visibility = 'hidden'
     }
 
     handleArrows() {
+
+        document.querySelector('.arrow').focus()
 
         document.querySelectorAll('.arrow').forEach(arrow => {
             arrow.addEventListener('click', () => {
@@ -61,6 +71,11 @@ export default class Slider {
     handleClose() {
         document.getElementById('close').addEventListener('click', () => {
             this.slider.className = 'slider'
+            this.slider.ariaHidden = "true"
+            this.main.ariaHidden = 'false'
+            this.header.ariaHidden = 'false'
+            this.main.style.visibility = 'visible'
+            this.header.style.visibility = 'visible'
         })
     }
 

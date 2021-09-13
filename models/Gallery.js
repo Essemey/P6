@@ -9,6 +9,7 @@ class Gallery {
         this.medias = []
         this.author = author
         this.factory = new MediaFactory()
+        this.slider = new Slider(this.medias)
         this.listBox = new ListBox()
     }
 
@@ -75,28 +76,12 @@ class Gallery {
 
             button.addEventListener('click', () => {
 
-                this.medias.forEach(media => {
-                    if (media.id == button.dataset.id) { //On récupère le bon media
-                        media.liked = !media.liked  //On change la valeur de liked
-                        handleLike(media) //On incrémente ou désincrémente selon le staut de liked
-                        button.parentNode.childNodes[0].data = media.likes //On affiche le nouveau nombre de likes
-                        this.displayScore()
-                    }
-                })
+                const media = this.medias.find(media => media.id == button.dataset.id)
+
+                media.toggle()
+                this.displayScore()
 
             })
-
-            function handleLike(media) {
-                if (media.liked) {
-                    media.likes++
-                    button.innerHTML = '&#xE87D'
-                    button.classList.replace('favorite_border', 'favorite')
-                } else {
-                    media.likes--
-                    button.innerHTML = '&#xE87E'
-                    button.classList.replace('favorite', 'favorite_border')
-                }
-            }
 
         })
 
@@ -105,16 +90,17 @@ class Gallery {
 
     listenSlider() {
 
-        const slider = new Slider(this.medias)
-
-        document.querySelectorAll('.media img, .media video').forEach(media => {
+        document.querySelectorAll('.media a').forEach(media => {
             media.addEventListener('click', (e) => {
-                slider.setCurrent(e.target)
-                slider.prepareVideo()
-                slider.display()
-                slider.handleClose()
-                slider.handleArrows()
+                e.preventDefault()
+                console.log(e.target)
+                this.slider.setCurrent(e.target)
+                this.slider.prepareVideo()
+                this.slider.display()
+                this.slider.handleClose()
+                this.slider.handleArrows()
             })
+
         })
     }
 

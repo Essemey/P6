@@ -7,34 +7,27 @@ fetch('/data.json')
     .then(res => res.json())
     .then(({ photographers, media }) => {
 
-        let author;
-        let gallery;
+        const author = photographers.find(photographer => window.location.search.substring(1) === photographer.id.toString(10))
 
-        if (checkPhotographer()) {
-            gallery.hydrate(media)
-            gallery.display()
-            gallery.displayScore()
-            author.display()
-            author.listenContact()
-            gallery.listenSlider()
-            gallery.listenLike()
-            ListBox.handleOpening()
-            gallery.handleSort()
-        } else {
-            window.location.replace('/')
+        if (!author) {
+            return window.location.replace('/')
         }
 
+        const photographer = new Photographer(author)
+        const gallery = new Gallery(photographer)
 
-        function checkPhotographer() {
-            const photographer = photographers.find(photographer => window.location.search.substring(1) === photographer.id.toString(10))
-            if (photographer) {
-                author = new Photographer(photographer)
-                gallery = new Gallery(author)
-                return true;
-            } else {
-                return false;
-            }
-        }
+        gallery.hydrate(media)
+        gallery.display()
+        gallery.displayScore()
+        photographer.display()
+        photographer.displayContact()
+        photographer.listenContact()
+        gallery.listenSlider()
+        gallery.listenLike()
+        ListBox.handleOpening()
+        gallery.handleSort()
+
+
     })
     .catch(err => console.error(err))
 

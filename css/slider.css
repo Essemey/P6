@@ -1,4 +1,4 @@
-main .slider{
+ .slider{
   position: fixed;
   top: 0;
   left: 0;
@@ -7,23 +7,29 @@ main .slider{
   z-index: 25;
   background-color: white;
   display: none;
+  visibility: hidden;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-main .slider .media_container{
+button{
+  background-color:transparent;
+  border:none;
+}
+
+ .slider .media_container{
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-main .slider .media_container .slider_media{
+ .slider .media_container .slider_media{
   display: flex;
   flex-direction: column;
 }
 
-main .slider .media_container .slider_media p{
+ .slider .media_container .slider_media p{
     font-size: 24px;
     color: #911C1C;
     font-weight: normal;
@@ -31,7 +37,7 @@ main .slider .media_container .slider_media p{
     margin-top: 8px;
 }
 
-main .slider img, main .slider video{
+ .slider img,  .slider video{
   width: 600px;
   height: 600px;
   object-fit: cover;
@@ -39,7 +45,7 @@ main .slider img, main .slider video{
   border-radius:5px;
 }
 
-main .slider #close{
+ .slider #close{
   font-size: 42px;
  align-self: flex-start;
   cursor: pointer;
@@ -48,7 +54,7 @@ main .slider #close{
   right: 90px;
 }
 
-main .arrow{
+ .arrow{
   font-size:48px;
   cursor: pointer;
   color:#901C1C;
@@ -58,27 +64,27 @@ main .arrow{
 
 @media all and (max-width:426px){
 
-main .slider img, main .slider video{
+ .slider img,  .slider video{
   width: 300px;
   height: 300px;
 }
 
-main .arrow{
+ .arrow{
   font-size:20px;
   margin-right: 5px;
   margin-left: 5px;
 }
 
-main .slider #close{
+ .slider #close{
   font-size: 20px;
   right: 25px;
 }
 
-main .slider .media_container{
+ .slider .media_container{
   margin-left: 20px;
 }
 
-main .slider .media_container .slider_media p{
+ .slider .media_container .slider_media p{
     font-size: 16px;
     line-height: 18px;
 }

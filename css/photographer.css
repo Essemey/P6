@@ -122,10 +122,17 @@ cursor: pointer;
 margin-bottom: 30px;
 }
 
+main #gallery .media a{
+display: flex;
+}
+
 main #gallery .media .media-infos{
  display:flex;
  align-items:center;
  justify-content:space-between;
+     flex-wrap: wrap;
+    width: 350px;
+    margin-top: 10px;
 }
 
 main #gallery .media .media-infos h2{
@@ -140,10 +147,11 @@ line-height: 31px;
 color: #911C1C;
 }
 
-main #gallery .media .media-infos p span{
+main #gallery .media .media-infos p .like {
   position: relative;
-  top: 1.2px;
-  margin-left: 3px;
+  top: 1.7px;
+  color: #911C1C;
+  cursor: pointer;
 }
 
 
@@ -159,6 +167,7 @@ main #gallery .media img, main #gallery .media video{
 
 .visible{
   display: flex !important;
+  visibility: visible !important;
 }
 
 
@@ -197,6 +206,11 @@ main .score p{
     flex-wrap: wrap;
 }
 
+main #gallery .media .media-infos{
+  width:auto;
+  margin-top: 0px;
+}
+
 main #gallery .media .media-infos h2{
   font-size:16px;
 }
@@ -204,6 +218,10 @@ main #gallery .media .media-infos h2{
 main #gallery .media .media-infos p{
   font-size:16px;
   font-weight: 500;
+}
+
+main #gallery .media .media-infos p .like {
+  font-size:17.5px;
 }
 
 main #gallery .media .media-infos p span{
@@ -293,12 +311,4 @@ main .score{
  display: none;
 }
 
-<<<<<<< HEAD:Css/photographer.css
 }
-=======
-main #listbox #content button {
-  width: 90%;
-  padding: 14px 20px;
-  border-top: 1px solid white;
-}
->>>>>>> 395a4dd2faff4f69ac7eb688fa5f7f3849cd8697:css/photographer.css
