@@ -1,6 +1,6 @@
 main #listbox {
   background-color: #901C1C;
-  width: 170px;
+  width: 180px;
   border-radius: 3px;
   margin-top: 10px;
 }
@@ -17,10 +17,13 @@ main #listbox button{
   border: none;
   color: white;
   cursor: pointer;
+  font-style: normal;
+font-size: 14.5px;
 }
 
 main #listbox #open{
   margin-right: 8px;
+  font-size: 26px;
 }
 
 main #listbox button[data-current]{
@@ -39,6 +42,22 @@ main #listbox #content button {
   padding: 14px 20px;
   border-top: 1px solid white;
 }
+
+main .listbox-container {
+ display: flex;
+ align-items: baseline;
+}
+
+main .listbox-container label {
+ display: flex;
+ align-items: center;
+ font-style: normal;
+font-weight: bold;
+font-size: 18px;
+line-height: 23px;
+margin-right: 12px;
+}
+
 
 
 @media all and (max-width:426px){

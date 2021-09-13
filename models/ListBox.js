@@ -46,7 +46,7 @@ class ListBox {
     render() {
 
         return `<div class="listbox-container">
-                    <label for="listbox">Trier par: </label>
+                    <label for="listbox">Trier par</label>
                     <div id="listbox">
                         <div class='btn-grp'>
                             <button id="popular" data-current='true' >Trier par popularité</button>
